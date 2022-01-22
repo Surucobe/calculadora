@@ -1,19 +1,49 @@
 const $plus = document.getElementById('plus');
 const $minus = document.getElementById('minus');
+const $reset = document.querySelector('.reset');
+let $counter = document.querySelector('.counter')
 
-let count = 0;
+
+//Decided to use closures 
+let Counter = (function () {
+  var count = 0;
+
+  function modifyCount(value) {
+    count += value;
+  }
+
+  function reset() {
+    count = 0;
+  }
+
+  return {
+    increment: function plus() {
+      modifyCount(1);
+    },
+
+    decrement: function minus() {
+      modifyCount(-1);
+    },
+    value: function () {
+      return count;
+    },
+    restart: function () {
+      reset();
+    }
+  }
+})();
 
 $plus.addEventListener('click', () => {
-  let $counter = document.querySelector('.counter')
-
-  count++;
-  $counter.innerHTML = count;
-
+  Counter.increment()
+  $counter.innerHTML = Counter.value();
 })
 
 $minus.addEventListener('click', () => {
-  let $counter = document.querySelector('.counter')
+  Counter.decrement();
+  $counter.innerHTML = Counter.value();
+})
 
-  count--;
-  $counter.innerHTML = count;
+$reset.addEventListener('click', () => {
+  Counter.restart();
+  $counter.innerHTML = Counter.value();
 })

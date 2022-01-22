@@ -1,0 +1,27 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  height: 100vh;
+  display: flex;
+  background: linear-gradient(#e66465, #9198e5);
+}
+
+.container{
+  margin: auto;
+  height: 80px;
+  width: 60%;
+  background-color: rgba(58, 58, 58, 0.3);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Time{
+  font-size: 45px;
+  font-weight: bolder;
+  color: #f5f5f5;
+}
