@@ -1,0 +1,17 @@
+.previous-operand{}
+
+.current-operand{}
+
+.output {
+  width: 500px;
+  height: 75px;
+  margin-bottom: 20px;
+  border: 2px dashed crimson;
+}
+
+
+button {
+  font-size: 1em;
+  width: 50px;
+  height: 50px;
+}
