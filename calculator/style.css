@@ -1,3 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.calculator-grid {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #00f;
+}
+
 .previous-operand{}
 
 .current-operand{}
