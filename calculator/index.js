@@ -2,6 +2,8 @@ const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const initialScreen = document.querySelector('.current-operand');
 const previousOperationScreen = document.querySelector('.previous-operand');
+
+const cleanScreen = document.querySelector('.clear');
 const result = document.querySelector('.result');
 
 let input = '';
@@ -20,6 +22,11 @@ operatorButtons.forEach((elm) => elm.addEventListener('click', () => {
   renderNumbersInScreen(elm.innerHTML);
 }));
 
+cleanScreen.addEventListener('click', () =>{
+  input = '';
+  renderNumbersInScreen();
+});
+
 result.addEventListener('click', () => {
   renderResult(mathResult());
 });
@@ -29,7 +36,7 @@ const mathResult = () => {
   return result;
 }
 
-const renderNumbersInScreen = (elm) => initialScreen.innerHTML += elm;
+const renderNumbersInScreen = (elm) => elm ? initialScreen.innerHTML += elm : initialScreen.innerHTML = '';
 function renderResult(elm) {
   previousOperationScreen.innerHTML += input;
   initialScreen.innerHTML = '';
