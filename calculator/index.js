@@ -1,30 +1,38 @@
+//Variables
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 const initialScreen = document.querySelector('.current-operand');
 const previousOperationScreen = document.querySelector('.previous-operand');
 
+const deleteButton = document.querySelector('.delete-button');
 const cleanScreen = document.querySelector('.clear');
 const result = document.querySelector('.result');
 
 let input = '';
 
+//functions
 numberButtons.forEach((elm) => elm.addEventListener('click', () =>{
-  console.log(elm.innerHTML);
   input += (elm.innerHTML);
   console.log(input);
-  renderNumbersInScreen(elm.innerHTML);
+  renderChangesInScreen(initialScreen, elm.innerHTML);
 }));
 
 operatorButtons.forEach((elm) => elm.addEventListener('click', () => {
-  console.log(elm.innerHTML);
   input += (elm.innerHTML);
   console.log(input);
-  renderNumbersInScreen(elm.innerHTML);
+  renderChangesInScreen(initialScreen, elm.innerHTML);
 }));
 
 cleanScreen.addEventListener('click', () =>{
   input = '';
-  renderNumbersInScreen();
+  renderChangesInScreen(previousOperationScreen);
+  renderChangesInScreen(initialScreen);
+});
+
+deleteButton.addEventListener('click', () =>{
+  input = input.slice(0, -1);
+  renderChangesInScreen(initialScreen);
+  renderChangesInScreen(initialScreen, input);
 });
 
 result.addEventListener('click', () => {
@@ -36,7 +44,10 @@ const mathResult = () => {
   return result;
 }
 
-const renderNumbersInScreen = (elm) => elm ? initialScreen.innerHTML += elm : initialScreen.innerHTML = '';
+const renderChangesInScreen = (container, elm) => {
+  elm ? container.innerHTML += elm : container.innerHTML = '';
+}
+
 function renderResult(elm) {
   previousOperationScreen.innerHTML += input;
   initialScreen.innerHTML = '';
