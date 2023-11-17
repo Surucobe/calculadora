@@ -24,7 +24,8 @@ body {
 .current-operand{}
 
 .output {
-  width: 500px;
+  margin: 20px;
+  width: 250px;
   height: 75px;
   margin-bottom: 20px;
   border: 2px dashed crimson;
