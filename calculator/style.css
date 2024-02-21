@@ -4,50 +4,61 @@
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  /* align-items: center;
-  justify-content: center; */
 }
 
-.calculator-grid {
-  margin: auto;
+.calculator {
+  border: 2px solid #000;
+  background-color: #ccc;
+  max-width: 350px;
+  width: 100%;
+  height: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  border: 2px solid #00f;
+  border-radius: 8px;
+  box-shadow: 10px 10px #444;
 }
 
-.output {
-  margin: 20px;
-  width: 250px;
-  height: 75px;
-  margin-bottom: 20px;
-  padding: 10px;
-  padding-left: 0;
-  border: 2px dashed crimson;
+#display {
+  border: 2px solid #000;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  font-size: 30px;
+  line-height: 50px;
+  padding-left: 10px;
+  font-weight: 600;
 }
-.output div {
-  margin: 5px;
-  margin-left: 0;
-}
-.previous-operand{
-  height: 25px;
-  border: 2px dashed crimson;
-}
-.current-operand{
-  height: 25px;
-  border: 2px dashed crimson;
+#display::placeholder {
+  color: #000;
 }
 
-.calculator-buttons {
-  margin-bottom: 20px;
+.buttons {
+  width: 100%;
+  max-width: 300px;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  grid-template-rows: repeat(5, 50px);
+  grid-template-columns: repeat(4, 50px);
 }
 
-
-button {
-  font-size: 1em;
+.button {
+  border: 0;
+  background-color: orangered;
+  border-radius: 50%;
   width: 50px;
   height: 50px;
+  font-size: 30px;
+  line-height: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #000;
 }

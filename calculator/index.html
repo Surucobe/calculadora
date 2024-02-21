@@ -6,45 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <title>Calculadora</title>
+  <title>Calculator</title>
 </head>
 
 <body>
-  <div class="calculator-grid">
-    <div class="output">
-      <div class="previous-operand"></div>
-      <div class="current-operand"></div>
-    </div>
-    <div class="calculator-buttons">
-      <div class="button-grid">
-        <button class="number-button">1</button>
-        <button class="number-button">2</button>
-        <button class="number-button">3</button>
-        <button class="operator-button"> + </button></div>
-      <div class="button-grid">
-        <button class="number-button">4</button>
-        <button class="number-button">5</button>
-        <button class="number-button">6</button>
-        <button class="operator-button"> - </button>
-      </div>
-      <div class="button-grid">
-        <button class="number-button">7</button>
-        <button class="number-button">8</button>
-        <button class="number-button">9</button>
-        <button class="operator-button"> * </button>
-      </div>
-      <div class="button-grid">
-        <button class="span-two clear">AC</button>
-        <button class="number-button">0</button>
-        <button >.</button>
-        <button class="operator-button"> ÷ </button>
-      </div>
-      <button class="delete-button">DEL</button>
-      <button class="span-two result"> = </button>
-      
+  <div class="calculator">
+    <input id="display" placeholder="0">
+    <div class="buttons">
+      <button class="button operation">7</button>
+      <button class="button operation">8</button>
+      <button class="button operation">9</button>
+      <button class="button operation">+</button>
+      <button class="button operation">4</button>
+      <button class="button operation">5</button>
+      <button class="button operation">6</button>
+      <button class="button operation">-</button>
+      <button class="button operation">1</button>
+      <button class="button operation">2</button>
+      <button class="button operation">3</button>
+      <button class="button operation">*</button>
+      <button class="button operation">.</button>
+      <button class="button operation">0</button>
+      <button class="button result">=</button>
+      <button class="button operation">/</button>
+      <button class="button clear">C</button>
+      <button class="button delete-last">D</button>
+      <button class="button negative">+/-</button>
     </div>
   </div>
 </body>
 <script src="./index.js"></script>
-
 </html>
