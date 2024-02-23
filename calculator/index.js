@@ -6,35 +6,38 @@ const clear = document.querySelector('.clear');
 const deleteLastInput = document.querySelector('.delete-last');
 const negativeNumber = document.querySelector('.negative');
 let finalResult = false;
-//TODO: change the whole behavior of the calculator, only a number can be on display at the time, same goes for the mathematical operaator
-//creation of new variables where we will store the values
-//there must be a difference between the button that push operators and numbers in order to overwrite the current values being display on screen
 let lastInput = 'operator';
 let currentValue = '';
 let operation = '';
 let nextValue = '';
 
-const addValueToTheInput = (input) => {
-  //TODO: add the logic to evaluate and asign the corresponding values to each variable and reste the input
+const addValueToInput = (input) => {
+  //TODO: add the logic to evaluate and asign the corresponding values to each variable and reset the input
   if(!isNaN(input) || input == '.'){
-    if(lastInput == 'operator'){
+    //FIX
+    if(lastInput == 'operator' && operation.length < 1){
+      operation = display.value;
       display.value = ''
       lastInput = 'number';
     }
-    console.log(`${input} is a number... or a dot idk man\nwe are using ${lastInput}!`)
-    //display.value += input;
   } else {
-    if(lastInput == 'number'){
+    if(lastInput == 'number' && !nextValue){
+      if(!currentValue){
+        currentValue = display.value;
+      }
       display.value = ''
       lastInput = 'operator'
+      //TODO: work on the behaviour of this funtion in order to better manipulate the results on screen
+      if(currentValue && operation) operate()
     }
-    console.log(`${input} is not a number\nwe are using ${lastInput}!`)
-    // display.value += input;
   }
+
+  //TODO: work on where and when to display
   display.value += input;
 }
 
 //TODO: readjust in order to work with a single string, which is the way it will be operate later on
+//figure if i will fraction this onto multiple functions to work as one
 const checkValidInput = (btn) => {
   //prevents the user from pushing a number or a dot input if there is a current final result
   //FIX: allows user to put a dot in the final result
@@ -54,21 +57,62 @@ const checkValidInput = (btn) => {
 
 $buttons.forEach(btn => btn.addEventListener('click', () => {
   if(checkValidInput(btn)){
-    addValueToTheInput(btn.innerHTML)
+    addValueToInput(btn.innerHTML)
   } else {
     return
   }
 }));
 
+const sum = () => {
+  return Number(currentValue) + Number(nextValue);
+}
+const substract = () => {
+  return Number(currentValue) - Number(nextValue);
+}
+const multiply = () => {
+  return Number(currentValue) * Number(nextValue);
+}
+const divide = () => {
+  return Number(currentValue) / Number(nextValue);
+}
+
 //TODO: change in order to make sure to not use the eval function, must create the proper functions to evaluate and make the corresponding operations
 const operate = () => {
   finalResult = true;
-  let resultToDisplay = eval(display.value);
-  resultToDisplay % 1 === 0 ? display.value = resultToDisplay : display.value = resultToDisplay.toFixed(2);
+  nextValue = display.value;
+
+  switch (operation) {
+    case '+':
+      currentValue = sum();
+      break;
+    case '-':
+      currentValue = substract();
+      break
+    case '*':
+      currentValue = multiply();
+      break
+    case '/':
+      currentValue = divide();
+      break
+  
+    default:
+      break;
+  }
+
+  if(currentValue % 1 === 0){
+    display.value = currentValue;
+    nextValue = ''
+    operation = ''
+  } else {
+    display.value = currentValue.toFixed(2);
+    nextValue = '';
+    operation = '';
+  }
 }
 
 const deleteLastInputInDisplay = () => {
-  display.value = display.value.slice(0, -1)
+  //TODO: agregar condicional para manejar el comportamiento en caso de que haya habido un resultado final
+  display.value = display.value.slice(0, -1);
 }
 
 result.addEventListener('click', operate);
