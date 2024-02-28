@@ -5,6 +5,8 @@ const clear = document.querySelector('.clear');
 const deleteLastInput = document.querySelector('.delete-last');
 const negativeNumber = document.querySelector('.negative');
 let finalResult = false;
+//the following is just purely cause i wanted to add this
+const $date = document.querySelector('.date');
 //true for numbers and false for operations
 let lastInput = true;
 let currentValue = '';
@@ -182,3 +184,7 @@ negativeNumber.addEventListener('click', handleNegativeOpetion)
 clear.addEventListener('click', clearDisplay);
 
 deleteLastInput.addEventListener('click', deleteLastInputInDisplay);
+
+function displayDate(){}
+
+$date.addEventListener('click', displayDate)
